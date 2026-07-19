@@ -35,13 +35,17 @@ export function initializeSocket(httpServer: HttpServer): Server {
   io.use(async (socket: Socket, next) => {
     try {
       const cookieHeader = socket.handshake.headers.cookie;
-      if (!cookieHeader) {
-        return next(new Error('Authentication required'));
+      let sessionToken = '';
+
+      if (cookieHeader) {
+        const cookies = cookie.parse(cookieHeader);
+        sessionToken = cookies['__Host-xo_session'] || cookies['xo_session'] || cookies['xo_session_client'] || '';
       }
 
-      const cookies = cookie.parse(cookieHeader);
-      const sessionToken =
-        cookies['__Host-xo_session'] || cookies['xo_session'];
+      // Fallback: Read token from socket handshake auth payload (useful on mobile viewports where cookies are blocked)
+      if (!sessionToken && socket.handshake.auth && socket.handshake.auth.token) {
+        sessionToken = socket.handshake.auth.token;
+      }
 
       if (!sessionToken) {
         return next(new Error('Authentication required'));

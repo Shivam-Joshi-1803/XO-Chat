@@ -63,6 +63,15 @@ router.post(
       path: '/',
     });
 
+    // Set non-HttpOnly cookie for client-side JS read (Socket.IO client fallback)
+    res.cookie('xo_session_client', result.data.session_token, {
+      httpOnly: false,
+      secure: env.isProd,
+      sameSite: env.isProd ? 'none' : 'lax',
+      maxAge: 365 * 24 * 60 * 60 * 1000, // 1 year
+      path: '/',
+    });
+
     // Return user data without session_token and recovery_key_hash,
     // but include the one-time recovery_key
     const { session_token, recovery_key_hash, ...publicData } = result.data;
@@ -98,6 +107,14 @@ router.post(
       path: '/',
     });
 
+    res.cookie('xo_session_client', result.data.session_token, {
+      httpOnly: false,
+      secure: env.isProd,
+      sameSite: env.isProd ? 'none' : 'lax',
+      maxAge: 365 * 24 * 60 * 60 * 1000,
+      path: '/',
+    });
+
     res.json({ success: true, message: 'Account recovered successfully' });
   }
 );
@@ -111,8 +128,13 @@ router.delete(
     const result = await userService.deleteUser(req.user!.id);
 
     if (result.success) {
-      // Clear session cookie
+      // Clear session cookies
       res.clearCookie('xo_session', {
+        path: '/',
+        secure: env.isProd,
+        sameSite: env.isProd ? 'none' : 'lax',
+      });
+      res.clearCookie('xo_session_client', {
         path: '/',
         secure: env.isProd,
         sameSite: env.isProd ? 'none' : 'lax',

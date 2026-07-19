@@ -2,7 +2,9 @@
 // XOChat — Constants
 // ──────────────────────────────────────────────
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+export const API_URL = typeof window !== 'undefined'
+  ? '/api'
+  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api');
 export const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:3001';
 
 export const USERNAME_REGEX = /^[a-zA-Z0-9_.]{3,20}$/;
