@@ -56,7 +56,7 @@ app.use(errorHandler);
 initializeSocket(httpServer);
 
 // ── Start Server ──────────────────────────────
-const HOST = env.isDev ? '127.0.0.1' : '0.0.0.0';
+const HOST = '0.0.0.0';
 httpServer.listen(env.PORT, HOST, () => {
   logger.info('server', `XOChat server running on ${HOST}:${env.PORT}`);
   logger.info('server', `Environment: ${env.NODE_ENV}`);
