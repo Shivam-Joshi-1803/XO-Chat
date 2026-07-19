@@ -19,27 +19,27 @@ export function Hero() {
             <span>Zero-Log Messaging Sandbox</span>
           </div>
 
-          <h1 className="text-[52px] md:text-[80px] font-black uppercase leading-[0.95] tracking-tighter mb-6 text-foreground">
+          <h1 className="text-[38px] xs:text-[52px] md:text-[80px] font-black uppercase leading-[0.95] tracking-tighter mb-6 text-foreground">
             ANONYMOUS.<br />
             REAL-TIME.<br />
             <span className="text-[#FF4F00]">SECURE.</span>
           </h1>
 
-          <p className="text-lg md:text-2xl font-bold max-w-xl text-foreground/60 leading-tight mb-8">
+          <p className="text-sm xs:text-lg md:text-2xl font-bold max-w-xl text-foreground/60 leading-tight mb-8">
             Communication stripped to its absolute essence. No tracking. No storage. Pure cryptographic signal.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 xs:gap-4">
             <button
               onClick={() => setShowUsernameModal(true)}
-              className="bg-foreground text-background px-10 py-5 text-sm uppercase tracking-widest font-black border-2 border-border hover:bg-[#FF4F00] hover:border-[#FF4F00] hover:text-white transition-colors duration-150 cursor-pointer rounded-none flex items-center justify-center gap-2"
+              className="bg-foreground text-background px-6 py-4 text-xs xs:px-10 xs:py-5 xs:text-sm uppercase tracking-widest font-black border-2 border-border hover:bg-[#FF4F00] hover:border-[#FF4F00] hover:text-white transition-colors duration-150 cursor-pointer rounded-none flex items-center justify-center gap-2"
             >
               Create Identity
               <ArrowRight className="w-4 h-4" />
             </button>
             <Link
               href="/recover"
-              className="bg-surface text-foreground px-10 py-5 text-sm uppercase tracking-widest font-black border-2 border-border hover:bg-foreground hover:text-background transition-colors duration-150 rounded-none flex items-center justify-center gap-2"
+              className="bg-surface text-foreground px-6 py-4 text-xs xs:px-10 xs:py-5 xs:text-sm uppercase tracking-widest font-black border-2 border-border hover:bg-foreground hover:text-background transition-colors duration-150 rounded-none flex items-center justify-center gap-2"
             >
               <KeyRound className="w-4 h-4" />
               Recover Account

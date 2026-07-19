@@ -47,7 +47,7 @@ export function Sidebar() {
   const pendingCount = pendingRequests.received.length;
 
   return (
-    <div className="w-72 md:w-80 flex flex-col h-full bg-surface border-r-2 border-border shrink-0 select-none">
+    <div className="w-full md:w-80 flex flex-col h-full bg-surface border-r-2 border-border shrink-0 select-none">
       {/* Brand Header */}
       <div className="px-5 py-4 border-b-2 border-border bg-foreground text-background shrink-0">
         <div className="flex items-center justify-between">

@@ -84,22 +84,22 @@ export function SettingsModal() {
       title="Settings"
       description="Manage your secure messaging and environment."
     >
-      <div className="space-y-6 mt-4">
+      <div className="space-y-4 mt-4">
         {/* Theme Settings */}
         <div className="space-y-2">
           <h3 className="text-[10px] font-black uppercase tracking-widest text-[#5e5e5e] dark:text-foreground/60">Theme</h3>
-          <div className="flex items-center justify-between p-3.5 border-2 border-border bg-surface">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between gap-3 p-3 border-2 border-border bg-surface">
+            <div className="flex items-center gap-2.5 min-w-0">
               <Sun className="w-4 h-4 text-foreground shrink-0" />
-              <div>
+              <div className="min-w-0">
                 <h4 className="text-xs font-black uppercase tracking-wide text-foreground">Visual Theme</h4>
                 <p className="text-[10px] text-foreground/60 font-medium leading-tight">Switch between light and dark modes</p>
               </div>
             </div>
-            <div className="flex border border-border bg-subtle-gray p-0.5 gap-0.5">
+            <div className="flex border border-border bg-subtle-gray p-0.5 gap-0.5 shrink-0">
               <button
                 onClick={() => handleToggleTheme('light')}
-                className={`px-3 py-1 font-mono text-[9px] font-black uppercase tracking-widest cursor-pointer rounded-none border
+                className={`px-2.5 py-1 font-mono text-[9px] font-black uppercase tracking-widest cursor-pointer rounded-none border
                   ${theme === 'light'
                     ? 'bg-foreground text-background border-border'
                     : 'bg-surface text-foreground border-transparent hover:bg-foreground/5'}`}
@@ -108,7 +108,7 @@ export function SettingsModal() {
               </button>
               <button
                 onClick={() => handleToggleTheme('dark')}
-                className={`px-3 py-1 font-mono text-[9px] font-black uppercase tracking-widest cursor-pointer rounded-none border
+                className={`px-2.5 py-1 font-mono text-[9px] font-black uppercase tracking-widest cursor-pointer rounded-none border
                   ${theme === 'dark'
                     ? 'bg-foreground text-background border-border'
                     : 'bg-surface text-foreground border-transparent hover:bg-foreground/5'}`}
@@ -122,17 +122,17 @@ export function SettingsModal() {
         {/* Notifications */}
         <div className="space-y-2">
           <h3 className="text-[10px] font-black uppercase tracking-widest text-[#5e5e5e] dark:text-foreground/60">Notifications</h3>
-          <div className="flex items-center justify-between p-3.5 border-2 border-border bg-surface">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between gap-3 p-3 border-2 border-border bg-surface">
+            <div className="flex items-center gap-2.5 min-w-0">
               <Bell className="w-4 h-4 text-foreground shrink-0" />
-              <div>
+              <div className="min-w-0">
                 <h4 className="text-xs font-black uppercase tracking-wide text-foreground">Desktop Notifications</h4>
                 <p className="text-[10px] text-foreground/60 font-medium leading-tight">Notify about incoming requests and messages</p>
               </div>
             </div>
             <button
               onClick={() => handleToggle('xo_notifications', !notifications, setNotifications)}
-              className={`px-3 py-1.5 border-2 border-border font-mono text-[10px] font-black uppercase tracking-widest transition-colors cursor-pointer rounded-none
+              className={`shrink-0 px-3 py-1.5 border-2 border-border font-mono text-[10px] font-black uppercase tracking-widest transition-colors cursor-pointer rounded-none
                 ${notifications ? 'bg-[#FF4F00] text-white border-[#FF4F00]' : 'bg-surface text-foreground hover:bg-foreground hover:text-background'}`}
             >
               {notifications ? 'ON' : 'OFF'}
@@ -143,17 +143,17 @@ export function SettingsModal() {
         {/* Chat Settings */}
         <div className="space-y-2">
           <h3 className="text-[10px] font-black uppercase tracking-widest text-[#5e5e5e] dark:text-foreground/60">Preferences</h3>
-          <div className="flex items-center justify-between p-3.5 border-2 border-border bg-surface">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between gap-3 p-3 border-2 border-border bg-surface">
+            <div className="flex items-center gap-2.5 min-w-0">
               <Download className="w-4 h-4 text-foreground shrink-0" />
-              <div>
+              <div className="min-w-0">
                 <h4 className="text-xs font-black uppercase tracking-wide text-foreground">Auto Image Loading</h4>
                 <p className="text-[10px] text-foreground/60 font-medium leading-tight">Load shared images instantly in conversations</p>
               </div>
             </div>
             <button
               onClick={() => handleToggle('xo_auto_download', !autoDownload, setAutoDownload)}
-              className={`px-3 py-1.5 border-2 border-border font-mono text-[10px] font-black uppercase tracking-widest transition-colors cursor-pointer rounded-none
+              className={`shrink-0 px-3 py-1.5 border-2 border-border font-mono text-[10px] font-black uppercase tracking-widest transition-colors cursor-pointer rounded-none
                 ${autoDownload ? 'bg-[#FF4F00] text-white border-[#FF4F00]' : 'bg-surface text-foreground hover:bg-foreground hover:text-background'}`}
             >
               {autoDownload ? 'ON' : 'OFF'}
@@ -206,9 +206,9 @@ export function SettingsModal() {
         </div>
 
         {/* Identity & Deletion */}
-        <div className="border-t-2 border-border/10 pt-4 flex items-center justify-between">
+        <div className="border-t-2 border-border/10 pt-4 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-3">
           <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-[#5e5e5e] dark:text-foreground/60">
-            <Shield className="w-4 h-4" /> Secure Sandbox
+            <Shield className="w-4 h-4 shrink-0" /> Secure Sandbox
           </div>
           <Button
             variant="danger"
@@ -216,7 +216,7 @@ export function SettingsModal() {
               setShowSettingsModal(false);
               setShowDeleteModal(true);
             }}
-            className="px-4 py-2"
+            className="w-full xs:w-auto px-4 py-2"
           >
             Delete Identity
           </Button>

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 export default function ChatLayout({ children }: { children: React.ReactNode }) {
   const { fetchUser, user, isAuthenticated, isLoading } = useUserStore();
-  const { fetchConversations, fetchRequests } = useChatStore();
+  const { fetchConversations, fetchRequests, activeConversationId } = useChatStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -45,10 +45,12 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="flex h-screen w-screen bg-background text-foreground overflow-hidden font-sans">
       {/* Shared Navigation Sidebar */}
-      <Sidebar />
+      <div className={`${activeConversationId ? 'hidden md:flex' : 'flex'} w-full md:w-80 h-full shrink-0`}>
+        <Sidebar />
+      </div>
 
       {/* Main Chat Area */}
-      <main className="flex-1 min-w-0 flex flex-col h-full bg-background border-l-2 border-border">
+      <main className={`${activeConversationId ? 'flex' : 'hidden md:flex'} flex-1 min-w-0 flex flex-col h-full bg-background border-l-2 border-border`}>
         {children}
       </main>
     </div>

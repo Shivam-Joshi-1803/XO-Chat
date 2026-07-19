@@ -29,6 +29,9 @@
   --color-border: var(--border);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+
+  /* Custom breakpoints */
+  --breakpoint-xs: 480px;
 }
 
 body {

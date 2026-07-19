@@ -63,6 +63,7 @@ export function Modal({
               border-2 border-border
               brutalist-shadow
               overflow-hidden rounded-none
+              max-h-[90vh] flex flex-col
             `}
           >
             {/* Header */}
@@ -87,7 +88,7 @@ export function Modal({
             )}
 
             {/* Content */}
-            <div className="px-6 pb-6 pt-4 bg-surface">{children}</div>
+            <div className="px-4 pb-5 pt-3 bg-surface overflow-y-auto flex-1">{children}</div>
           </motion.div>
         </div>
       )}
