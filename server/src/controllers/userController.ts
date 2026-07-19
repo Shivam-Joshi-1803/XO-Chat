@@ -53,11 +53,12 @@ router.post(
     }
 
     // Set session token in HttpOnly cookie
-    const cookieName = env.isProd ? '__Host-xo_session' : 'xo_session';
+    // In production: SameSite=None + Secure required for cross-origin fetch (Vercel→Render)
+    const cookieName = 'xo_session';
     res.cookie(cookieName, result.data.session_token, {
       httpOnly: true,
       secure: env.isProd,
-      sameSite: 'lax',
+      sameSite: env.isProd ? 'none' : 'lax',
       maxAge: 365 * 24 * 60 * 60 * 1000, // 1 year
       path: '/',
     });
@@ -87,11 +88,12 @@ router.post(
     }
 
     // Issue a new session cookie with the rotated token
-    const cookieName = env.isProd ? '__Host-xo_session' : 'xo_session';
+    // In production: SameSite=None + Secure required for cross-origin fetch (Vercel→Render)
+    const cookieName = 'xo_session';
     res.cookie(cookieName, result.data.session_token, {
       httpOnly: true,
       secure: env.isProd,
-      sameSite: 'lax',
+      sameSite: env.isProd ? 'none' : 'lax',
       maxAge: 365 * 24 * 60 * 60 * 1000,
       path: '/',
     });
@@ -110,8 +112,11 @@ router.delete(
 
     if (result.success) {
       // Clear session cookie
-      const cookieName = env.isProd ? '__Host-xo_session' : 'xo_session';
-      res.clearCookie(cookieName, { path: '/' });
+      res.clearCookie('xo_session', {
+        path: '/',
+        secure: env.isProd,
+        sameSite: env.isProd ? 'none' : 'lax',
+      });
     }
 
     res.json(result);
