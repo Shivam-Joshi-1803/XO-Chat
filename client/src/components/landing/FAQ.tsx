@@ -56,8 +56,12 @@ export function FAQ() {
                 className="border-2 border-border bg-surface rounded-none overflow-hidden transition-all duration-150"
               >
                 <button
+                  type="button"
+                  id={`faq-button-${idx}`}
                   onClick={() => toggle(idx)}
-                  className="w-full flex items-center justify-between p-5 text-left text-sm md:text-base font-bold uppercase tracking-wider text-foreground transition-colors cursor-pointer select-none"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${idx}`}
+                  className="w-full flex items-center justify-between p-5 text-left text-sm md:text-base font-bold uppercase tracking-wider text-foreground hover:text-[#FF4F00] transition-colors cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-[#FF4F00]"
                 >
                   <span>{faq.question}</span>
                   <ChevronDown
@@ -70,12 +74,15 @@ export function FAQ() {
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      id={`faq-answer-${idx}`}
+                      role="region"
+                      aria-labelledby={`faq-button-${idx}`}
                       initial={{ height: 0 }}
                       animate={{ height: 'auto' }}
                       exit={{ height: 0 }}
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
                     >
-                      <div className="px-5 pb-5 pt-1 text-xs md:text-sm text-foreground/60 font-medium leading-relaxed border-t border-border bg-subtle-gray">
+                      <div className="px-5 pb-5 pt-1 text-xs md:text-sm text-foreground/80 font-medium leading-relaxed border-t border-border bg-subtle-gray">
                         {faq.answer}
                       </div>
                     </motion.div>

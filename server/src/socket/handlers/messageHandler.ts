@@ -35,7 +35,7 @@ export function handleMessages(io: Server, socket: Socket, userId: string): void
       const otherUserId = conv.user_one === userId ? conv.user_two : conv.user_one;
 
       // Send to both users (sender gets it too for multi-tab sync)
-      io.to(`user:${userId}`).to(`user:${otherUserId}`).emit(SOCKET_EVENTS.MESSAGE_NEW, message);
+      io.to([`user:${userId}`, `user:${otherUserId}`]).emit(SOCKET_EVENTS.MESSAGE_NEW, message);
 
       // Confirm delivery to sender's socket
       socket.emit(SOCKET_EVENTS.MESSAGE_DELIVERED, {

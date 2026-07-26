@@ -2,12 +2,15 @@
 import React, { useEffect } from 'react';
 import { useUserStore } from '@/stores/userStore';
 import { useChatStore } from '@/stores/chatStore';
+import { useUIStore } from '@/stores/uiStore';
 import { Sidebar } from '@/components/chat/Sidebar';
+import { ImagePreviewModal } from '@/components/modals/ImagePreviewModal';
 import { useRouter } from 'next/navigation';
 
 export default function ChatLayout({ children }: { children: React.ReactNode }) {
   const { fetchUser, user, isAuthenticated, isLoading } = useUserStore();
   const { fetchConversations, fetchRequests, activeConversationId } = useChatStore();
+  const { setShowImagePreview } = useUIStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -27,6 +30,10 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
     }
   }, [isAuthenticated, user, fetchConversations, fetchRequests]);
 
+  useEffect(() => {
+    setShowImagePreview(null);
+  }, [activeConversationId, setShowImagePreview]);
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -43,16 +50,18 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
   }
 
   return (
-    <div className="flex h-screen w-screen bg-background text-foreground overflow-hidden font-sans">
+    <div className="fixed inset-0 flex h-[100dvh] h-dvh w-full max-w-full bg-background text-foreground overflow-hidden font-sans touch-manipulation">
       {/* Shared Navigation Sidebar */}
-      <div className={`${activeConversationId ? 'hidden md:flex' : 'flex'} w-full md:w-80 h-full shrink-0`}>
+      <div className={`${activeConversationId ? 'hidden md:flex' : 'flex'} w-full md:w-80 h-full shrink-0 min-h-0`}>
         <Sidebar />
       </div>
 
       {/* Main Chat Area */}
-      <main className={`${activeConversationId ? 'flex' : 'hidden md:flex'} flex-1 min-w-0 flex flex-col h-full bg-background border-l-2 border-border`}>
+      <main className={`${activeConversationId ? 'flex' : 'hidden md:flex'} flex-1 min-w-0 flex flex-col h-full bg-background border-l-2 border-border min-h-0`}>
         {children}
       </main>
+
+      <ImagePreviewModal />
     </div>
   );
 }

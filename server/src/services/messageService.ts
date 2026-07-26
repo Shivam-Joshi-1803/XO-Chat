@@ -4,6 +4,7 @@
 import { messageRepository } from '../repositories/messageRepository';
 import { conversationRepository } from '../repositories/conversationRepository';
 import { userService } from './userService';
+import { getIO } from '../socket/socketManager';
 import { sanitizeText } from '../utils/sanitize';
 import { ApiResponse, Message, PaginatedResponse } from '../types';
 import { logger } from '../utils/logger';
@@ -66,6 +67,14 @@ export const messageService = {
     // Update conversation timestamp
     await conversationRepository.touch(params.conversation_id);
 
+    // Broadcast real-time message:new to both sender and receiver sockets
+    try {
+      const io = getIO();
+      io.to([`user:${userId}`, `user:${otherUserId}`]).emit('message:new', message);
+    } catch (err) {
+      logger.error('messageService', 'Failed to emit socket message:new', err);
+    }
+
     return { success: true, data: message };
   },
 
@@ -119,6 +128,21 @@ export const messageService = {
       return { success: false, error: 'Failed to delete message' };
     }
 
+    // Broadcast real-time message:deleted to both participants
+    try {
+      const io = getIO();
+      const conv = await conversationRepository.findById(message.conversation_id);
+      if (conv) {
+        const otherUserId = conv.user_one === userId ? conv.user_two : conv.user_one;
+        io.to([`user:${userId}`, `user:${otherUserId}`]).emit('message:deleted', {
+          messageId,
+          conversationId: message.conversation_id,
+        });
+      }
+    } catch (err) {
+      logger.error('messageService', 'Failed to emit socket message:deleted', err);
+    }
+
     return { success: true, message: 'Message deleted' };
   },
 
@@ -135,6 +159,22 @@ export const messageService = {
     }
 
     await messageRepository.markAsRead(conversationId, userId);
+
+    // Broadcast real-time message:seen to other participant
+    try {
+      const io = getIO();
+      const conv = await conversationRepository.findById(conversationId);
+      if (conv) {
+        const otherUserId = conv.user_one === userId ? conv.user_two : conv.user_one;
+        io.to(`user:${otherUserId}`).emit('message:seen', {
+          conversationId,
+          seenBy: userId,
+        });
+      }
+    } catch (err) {
+      logger.error('messageService', 'Failed to emit socket message:seen', err);
+    }
+
     return { success: true };
   },
 

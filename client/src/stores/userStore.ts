@@ -21,14 +21,21 @@ export const useUserStore = create<UserState>((set) => ({
   isLoading: true,
   isAuthenticated: false,
 
-  setUser: (user) =>
-    set({ user, isAuthenticated: !!user, isLoading: false }),
+  setUser: (user) => {
+    if (typeof window !== 'undefined' && user?.session_token) {
+      sessionStorage.setItem('xo_session_token', user.session_token);
+    }
+    set({ user, isAuthenticated: !!user, isLoading: false });
+  },
 
   fetchUser: async () => {
     set({ isLoading: true });
     try {
       const res = await api.getMe();
       if (res.success && res.data) {
+        if (typeof window !== 'undefined' && res.data.session_token) {
+          sessionStorage.setItem('xo_session_token', res.data.session_token);
+        }
         set({ user: res.data, isAuthenticated: true, isLoading: false });
       } else {
         set({ user: null, isAuthenticated: false, isLoading: false });
@@ -39,6 +46,9 @@ export const useUserStore = create<UserState>((set) => ({
   },
 
   logout: () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('xo_session_token');
+    }
     set({ user: null, isAuthenticated: false, isLoading: false });
   },
 }));

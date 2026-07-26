@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { Shield, Bolt, PersonStanding, EyeOff } from 'lucide-react';
+import Image from 'next/image';
+import { Shield, Bolt, EyeOff } from 'lucide-react';
 
 export function Features() {
   return (
@@ -103,14 +104,16 @@ export function Features() {
 
             {/* Bento Card 4 (Raw brutalist architectural image mockup) */}
             <div className="col-span-4 md:col-span-8 relative overflow-hidden border-2 border-border min-h-[300px] group rounded-none">
-              <div 
-                className="absolute inset-0 bg-cover bg-center grayscale contrast-125 transition-transform duration-700 group-hover:scale-105"
-                style={{ 
-                  backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQhPbmDKCQzVS7CygN3J-OFlSmIV2vEjK4UiuC-7YuWU7zooMU4d59DwSZZsUNnUbgd5Nwy-9p9u5wlW5-PlDG_pU_O6NJYTAJ1YaWSEh0LWkJ6KEn9CWczF2rJHwYEIv1IKc5IzPFgLMKEUzygqMl40yTh9lszRMSX97sYB9h-42G9NiURXs8wq_zO2Dlw04PXYgPt1FQ70eJ7Ahuje7izcC0gHhAUdMCRELjRNoUo0-kyRgyMDmIfQ')` 
-                }}
+              <Image 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQhPbmDKCQzVS7CygN3J-OFlSmIV2vEjK4UiuC-7YuWU7zooMU4d59DwSZZsUNnUbgd5Nwy-9p9u5wlW5-PlDG_pU_O6NJYTAJ1YaWSEh0LWkJ6KEn9CWczF2rJHwYEIv1IKc5IzPFgLMKEUzygqMl40yTh9lszRMSX97sYB9h-42G9NiURXs8wq_zO2Dlw04PXYgPt1FQ70eJ7Ahuje7izcC0gHhAUdMCRELjRNoUo0-kyRgyMDmIfQ"
+                alt="Visual Node Architectural Structure"
+                fill
+                sizes="(max-width: 768px) 100vw, 66vw"
+                loading="lazy"
+                className="object-cover grayscale contrast-125 transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-[#FF4F00]/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-6 left-6 bg-surface text-foreground px-4 py-2 font-mono text-xs uppercase tracking-widest font-black border border-border rounded-none">
+              <div className="absolute inset-0 bg-[#FF4F00]/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute bottom-6 left-6 bg-surface text-foreground px-4 py-2 font-mono text-xs uppercase tracking-widest font-black border border-border rounded-none z-10">
                 Visual Node: 0x82FA
               </div>
             </div>

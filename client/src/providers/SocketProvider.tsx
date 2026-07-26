@@ -17,7 +17,7 @@ export function useSocket(): Socket | null {
 }
 
 export function SocketProvider({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useUserStore();
+  const { isAuthenticated, user } = useUserStore();
   const {
     addMessage,
     updateConversationLastMessage,
@@ -36,7 +36,7 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isAuthenticated) return;
 
-    connectSocket();
+    connectSocket(user?.session_token);
     const s = getSocket();
 
     // ── Presence ────────────────────────────
@@ -134,7 +134,7 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
       s.off('error:message');
       disconnectSocket();
     };
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user?.id, user?.session_token]);
 
   return (
     <SocketContext.Provider value={socket}>

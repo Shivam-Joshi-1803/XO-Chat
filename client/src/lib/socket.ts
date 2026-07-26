@@ -18,9 +18,16 @@ function getCookie(name: string): string | null {
   return null;
 }
 
+function getToken(): string | null {
+  if (typeof window === 'undefined') return null;
+  const storageToken = sessionStorage.getItem('xo_session_token');
+  if (storageToken) return storageToken;
+  return getCookie('xo_session_client') || getCookie('xo_session');
+}
+
 export function getSocket(): Socket {
   if (!socket) {
-    const token = getCookie('xo_session_client');
+    const token = getToken();
     socket = io(SOCKET_URL, {
       withCredentials: true,
       autoConnect: false,
@@ -37,8 +44,18 @@ export function getSocket(): Socket {
   return socket;
 }
 
-export function connectSocket(): void {
+export function connectSocket(overrideToken?: string): void {
+  const token = overrideToken || getToken();
   const s = getSocket();
+  const currentToken = (s.auth as any)?.token;
+
+  if (token && currentToken !== token) {
+    s.auth = { token };
+    if (s.connected) {
+      s.disconnect();
+    }
+  }
+
   if (!s.connected) {
     s.connect();
   }

@@ -11,6 +11,7 @@ export interface User {
   online: boolean;
   last_seen: string;
   last_active: string;
+  session_token?: string;
   created_at: string;
   updated_at: string;
 }

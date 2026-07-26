@@ -72,9 +72,8 @@ router.post(
       path: '/',
     });
 
-    // Return user data without session_token and recovery_key_hash,
-    // but include the one-time recovery_key
-    const { session_token, recovery_key_hash, ...publicData } = result.data;
+    // Return user data including session_token for client-side storage isolation
+    const { recovery_key_hash, ...publicData } = result.data;
     res.status(201).json({ success: true, data: publicData });
   }
 );
@@ -115,7 +114,7 @@ router.post(
       path: '/',
     });
 
-    res.json({ success: true, message: 'Account recovered successfully' });
+    res.json({ success: true, message: 'Account recovered successfully', session_token: result.data.session_token });
   }
 );
 
@@ -166,7 +165,7 @@ router.get(
   async (req: Request, res: Response): Promise<void> => {
     // Update last_active on dashboard open / session validation
     await userRepository.updateLastActive(req.user!.id);
-    const { session_token, recovery_key_hash, ...publicUser } = req.user!;
+    const { recovery_key_hash, ...publicUser } = req.user!;
     res.json({ success: true, data: publicUser });
   }
 );

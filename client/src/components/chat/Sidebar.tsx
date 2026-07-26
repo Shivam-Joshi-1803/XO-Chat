@@ -9,7 +9,6 @@ import { NewChatModal } from '@/components/modals/NewChatModal';
 import { SettingsModal } from '@/components/modals/SettingsModal';
 import { ProfileModal } from '@/components/modals/ProfileModal';
 import { DeleteIdentityModal } from '@/components/modals/DeleteIdentityModal';
-import { ImagePreviewModal } from '@/components/modals/ImagePreviewModal';
 import { ChatListItem } from './ChatListItem';
 import { NoChats } from './EmptyStates';
 import {
@@ -152,7 +151,6 @@ export function Sidebar() {
       <SettingsModal />
       <ProfileModal />
       <DeleteIdentityModal />
-      <ImagePreviewModal />
     </div>
   );
 }

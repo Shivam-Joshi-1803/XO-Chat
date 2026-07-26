@@ -5,6 +5,7 @@ import { requestRepository } from '../repositories/requestRepository';
 import { conversationRepository } from '../repositories/conversationRepository';
 import { userRepository } from '../repositories/userRepository';
 import { userService } from './userService';
+import { getIO } from '../socket/socketManager';
 import { ApiResponse, ChatRequest, PublicUser } from '../types';
 import { logger } from '../utils/logger';
 
@@ -47,6 +48,16 @@ export const requestService = {
       return { success: false, error: 'Failed to send chat request' };
     }
 
+    // Broadcast request:new to receiver
+    try {
+      const io = getIO();
+      const senderInfo = await userRepository.findPublicById(senderId);
+      const enrichedRequest = { ...request, sender: senderInfo || undefined };
+      io.to(`user:${receiver.id}`).emit('request:new', enrichedRequest);
+    } catch (err) {
+      logger.error('requestService', 'Failed to emit request:new', err);
+    }
+
     logger.info('requestService', 'Chat request sent');
     return { success: true, data: request };
   },
@@ -84,6 +95,17 @@ export const requestService = {
 
     if (!conversation) {
       return { success: false, error: 'Failed to create conversation' };
+    }
+
+    // Broadcast request:accepted to both sender and receiver
+    try {
+      const io = getIO();
+      io.to([`user:${request.sender_id}`, `user:${request.receiver_id}`]).emit('request:accepted', {
+        requestId,
+        conversationId: conversation.id,
+      });
+    } catch (err) {
+      logger.error('requestService', 'Failed to emit request:accepted', err);
     }
 
     logger.info('requestService', 'Chat request accepted, conversation created');
