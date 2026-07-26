@@ -116,7 +116,7 @@ export function Hero() {
                       <div className="bg-surface border-2 border-border rounded-none p-3 text-xs text-foreground font-semibold max-w-[80%]">
                         Yes. It checks users inactive for 7 days. If they have no chats, blocks, or active media, they get completely wiped.
                       </div>
-                      <div className="w-8 h-8 bg-[#FF4F00] text-white flex items-center justify-center text-[10px] font-black uppercase tracking-wider rounded-none shrink-0 border border-border">
+                      <div className="w-8 h-8 bg-[#C63A00] text-white flex items-center justify-center text-[10px] font-black uppercase tracking-wider rounded-none shrink-0 border border-border">
                         ME
                       </div>
                     </div>
@@ -126,7 +126,7 @@ export function Hero() {
                         GH
                       </div>
                       <div className="bg-subtle-gray border border-border rounded-none p-3 text-xs text-foreground max-w-[80%] font-medium space-y-2">
-                        <div className="flex items-center gap-1 text-[9px] text-white font-bold bg-[#FF4F00] px-1.5 py-0.5 w-fit uppercase tracking-widest">
+                        <div className="flex items-center gap-1 text-[9px] text-white font-bold bg-[#C63A00] px-1.5 py-0.5 w-fit uppercase tracking-widest">
                           <Pin className="w-2.5 h-2.5" /> Pinned
                         </div>
                         <p>Outstanding! That makes abandoned names available again safely.</p>
@@ -169,7 +169,7 @@ export function Hero() {
                 {activeMockupTab === 'recovery' && (
                   <div className="w-full space-y-4 text-center">
                     <div className="w-10 h-10 border border-border bg-foreground flex items-center justify-center mx-auto text-background rounded-none">
-                      <KeyRound className="w-5 h-5 text-primary-text" />
+                      <KeyRound className="w-5 h-5 text-[#FF8040]" />
                     </div>
                     <div className="space-y-1">
                       <span className="block text-xs font-black uppercase tracking-wider text-foreground">Argon2id Recovery Key</span>
@@ -193,7 +193,7 @@ export function Hero() {
       <section className="w-full h-[200px] bg-foreground flex items-center justify-center text-background select-none relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-lines opacity-10" />
         <div className="border-2 border-background p-8 text-center rounded-none">
-          <span className="font-mono text-lg md:text-xl tracking-[0.3em] font-black uppercase text-primary-text">
+          <span className="font-mono text-lg md:text-xl tracking-[0.3em] font-black uppercase text-[#FF8040]">
             STATUS: ENCRYPTED // ZERO_KNOWLEDGE
           </span>
         </div>

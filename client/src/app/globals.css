@@ -37,11 +37,21 @@
   --breakpoint-xs: 480px;
 }
 
+html {
+  /* Prevent double-tap zoom while keeping pinch-to-zoom for accessibility */
+  touch-action: manipulation;
+  /* Prevent iOS auto text-resize on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   letter-spacing: -0.01em;
+  /* Ensure overscroll doesn't pull browser chrome */
+  overscroll-behavior: none;
 }
 
 /* Custom Scrollbars in Brutalist/Swiss style */

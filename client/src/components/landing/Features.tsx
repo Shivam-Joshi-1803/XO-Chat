@@ -47,7 +47,7 @@ export function Features() {
         <div className="px-6 md:px-12 max-w-[1280px] mx-auto">
           <div className="grid grid-cols-4 md:grid-cols-12 gap-6">
             <div className="col-span-4 md:col-span-12 mb-8">
-              <span className="block text-xs font-semibold uppercase tracking-[0.4em] text-primary-text">Network Status</span>
+              <span className="block text-xs font-semibold uppercase tracking-[0.4em] text-[#FF8040]">Network Status</span>
             </div>
             <div className="col-span-4 md:col-span-4 border-l border-background/20 pl-6 py-4">
               <div className="font-mono text-4xl md:text-5xl font-bold mb-2">14,209</div>
@@ -81,7 +81,7 @@ export function Features() {
             </div>
 
             {/* Bento Card 2 */}
-            <div className="col-span-4 md:col-span-4 border-2 border-[#FF4F00] p-8 bg-[#FF4F00] text-white flex flex-col justify-between min-h-[350px] group transition-all duration-300 hover:scale-[1.01] rounded-none">
+            <div className="col-span-4 md:col-span-4 border-2 border-[#C63A00] p-8 bg-[#C63A00] text-white flex flex-col justify-between min-h-[350px] group transition-all duration-300 hover:scale-[1.01] rounded-none">
               <div>
                 <Bolt className="w-12 h-12 mb-6 text-white" />
                 <h3 className="text-3xl font-black uppercase leading-none tracking-tight">INSTANT<br />SOCKETS</h3>

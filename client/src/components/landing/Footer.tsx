@@ -16,7 +16,7 @@ export function Footer() {
             <a
               href="#features"
               aria-label="Explore XOChat Features"
-              className="inline-block w-full md:w-auto bg-[#FF4F00] text-white px-16 py-8 font-black text-2xl md:text-4xl uppercase border-4 border-background hover:bg-background hover:text-foreground hover:border-[#FF4F00] transition-all duration-150 cursor-pointer text-center rounded-none focus-visible:outline-2 focus-visible:outline-white"
+              className="inline-block w-full md:w-auto bg-[#C63A00] text-white px-16 py-8 font-black text-2xl md:text-4xl uppercase border-4 border-background hover:bg-background hover:text-foreground hover:border-[#C63A00] transition-all duration-150 cursor-pointer text-center rounded-none focus-visible:outline-2 focus-visible:outline-white"
             >
               <TextScramble text="ENTER XOCHAT" autostart={false} />
             </a>
