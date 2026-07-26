@@ -4,6 +4,7 @@
   --background: #f9f9f9;
   --foreground: #1a1c1c;
   --primary: #FF4F00;
+  --primary-text: #C53D00;
   --surface: #ffffff;
   --subtle-gray: #f2f2f2;
   --border: #000000;
@@ -15,6 +16,7 @@
   --background: #0a0a0c;
   --foreground: #f9f9f9;
   --primary: #FF4F00;
+  --primary-text: #FF6B2B;
   --surface: #121215;
   --subtle-gray: #1b1b1f;
   --border: #ffffff;
@@ -24,6 +26,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-primary-text: var(--primary-text);
   --color-surface: var(--surface);
   --color-subtle-gray: var(--subtle-gray);
   --color-border: var(--border);

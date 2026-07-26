@@ -41,7 +41,7 @@ export function FAQ() {
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-foreground">
             FREQUENTLY ASKED QUESTIONS
           </h2>
-          <p className="text-foreground/85 text-sm md:text-base font-medium">
+          <p className="text-foreground text-sm md:text-base font-medium">
             Everything you need to know about the privacy, recovery, and security model of XOChat.
           </p>
         </div>
@@ -61,12 +61,12 @@ export function FAQ() {
                   onClick={() => toggle(idx)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${idx}`}
-                  className="w-full flex items-center justify-between p-5 text-left text-sm md:text-base font-bold uppercase tracking-wider text-foreground hover:text-[#FF4F00] transition-colors cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-[#FF4F00]"
+                  className="w-full flex items-center justify-between p-5 text-left text-sm md:text-base font-bold uppercase tracking-wider text-foreground hover:text-primary-text transition-colors cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-primary-text"
                 >
                   <span>{faq.question}</span>
                   <ChevronDown
                     className={`w-4 h-4 text-foreground transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-[#FF4F00]' : ''
+                      isOpen ? 'rotate-180 text-primary-text' : ''
                     }`}
                   />
                 </button>
@@ -82,7 +82,7 @@ export function FAQ() {
                       exit={{ height: 0 }}
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
                     >
-                      <div className="px-5 pb-5 pt-1 text-xs md:text-sm text-foreground/90 font-medium leading-relaxed border-t border-border bg-subtle-gray">
+                      <div className="px-5 pb-5 pt-1 text-xs md:text-sm text-foreground font-medium leading-relaxed border-t border-border bg-subtle-gray">
                         {faq.answer}
                       </div>
                     </motion.div>

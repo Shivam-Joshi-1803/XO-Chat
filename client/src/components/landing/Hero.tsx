@@ -25,7 +25,7 @@ export function Hero() {
             <span className="text-[#FF4F00]">SECURE.</span>
           </h1>
 
-          <p className="text-sm xs:text-lg md:text-2xl font-bold max-w-xl text-foreground/85 leading-tight mb-8">
+          <p className="text-sm xs:text-lg md:text-2xl font-bold max-w-xl text-foreground leading-tight mb-8">
             Communication stripped to its absolute essence. No tracking. No storage. Pure cryptographic signal.
           </p>
 
@@ -68,7 +68,7 @@ export function Hero() {
                     className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest transition-all cursor-pointer rounded-none border ${
                       activeMockupTab === 'chat' 
                         ? 'bg-foreground text-background border-border' 
-                        : 'text-foreground/75 border-transparent hover:border-border hover:text-foreground'
+                        : 'text-foreground border-transparent hover:border-border hover:text-foreground'
                     }`}
                   >
                     Chat
@@ -79,7 +79,7 @@ export function Hero() {
                     className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest transition-all cursor-pointer rounded-none border ${
                       activeMockupTab === 'requests' 
                         ? 'bg-foreground text-background border-border' 
-                        : 'text-foreground/75 border-transparent hover:border-border hover:text-foreground'
+                        : 'text-foreground border-transparent hover:border-border hover:text-foreground'
                     }`}
                   >
                     Requests
@@ -90,7 +90,7 @@ export function Hero() {
                     className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest transition-all cursor-pointer rounded-none border ${
                       activeMockupTab === 'recovery' 
                         ? 'bg-foreground text-background border-border' 
-                        : 'text-foreground/75 border-transparent hover:border-border hover:text-foreground'
+                        : 'text-foreground border-transparent hover:border-border hover:text-foreground'
                     }`}
                   >
                     Recovery
@@ -143,7 +143,7 @@ export function Hero() {
                         <div className="w-7 h-7 bg-foreground text-background flex items-center justify-center text-[9px] font-black uppercase tracking-wider rounded-none border border-border">AL</div>
                         <div>
                           <span className="block text-[10px] font-black uppercase tracking-wider text-foreground">@alice</span>
-                          <p className="text-[9px] text-foreground/80 uppercase tracking-wider">Incoming request</p>
+                          <p className="text-[9px] text-foreground uppercase tracking-wider">Incoming request</p>
                         </div>
                       </div>
                       <div className="flex gap-1.5">
@@ -152,15 +152,15 @@ export function Hero() {
                       </div>
                     </div>
 
-                    <div className="p-3 border border-border bg-surface flex items-center justify-between rounded-none opacity-80">
+                    <div className="p-3 border border-border bg-surface flex items-center justify-between rounded-none">
                       <div className="flex items-center gap-2">
                         <div className="w-7 h-7 bg-foreground text-background flex items-center justify-center text-[9px] font-black uppercase tracking-wider rounded-none border border-border">BO</div>
                         <div>
                           <span className="block text-[10px] font-black uppercase tracking-wider text-foreground">@bob</span>
-                          <p className="text-[9px] text-foreground/80 uppercase tracking-wider">Pending approval</p>
+                          <p className="text-[9px] text-foreground uppercase tracking-wider">Pending approval</p>
                         </div>
                       </div>
-                      <span className="text-[9px] font-black uppercase tracking-widest text-[#FF4F00] bg-[#FF4F00]/10 border border-[#FF4F00]/20 px-2 py-0.5 rounded-none">Sent</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-primary-text bg-primary-text/10 border border-primary-text/20 px-2 py-0.5 rounded-none">Sent</span>
                     </div>
                   </div>
                 )}
@@ -169,16 +169,16 @@ export function Hero() {
                 {activeMockupTab === 'recovery' && (
                   <div className="w-full space-y-4 text-center">
                     <div className="w-10 h-10 border border-border bg-foreground flex items-center justify-center mx-auto text-background rounded-none">
-                      <KeyRound className="w-5 h-5 text-[#FF4F00]" />
+                      <KeyRound className="w-5 h-5 text-primary-text" />
                     </div>
                     <div className="space-y-1">
                       <span className="block text-xs font-black uppercase tracking-wider text-foreground">Argon2id Recovery Key</span>
-                      <p className="text-[10px] text-foreground/80 uppercase tracking-wider">Restores identity access securely.</p>
+                      <p className="text-[10px] text-foreground uppercase tracking-wider">Restores identity access securely.</p>
                     </div>
                     <div className="border border-border bg-subtle-gray p-2.5 max-w-[280px] mx-auto text-center rounded-none font-mono text-[10px] font-bold text-foreground tracking-widest select-all">
                       XO-8F4C-3E90-A11B-44C1
                     </div>
-                    <p className="text-[9px] text-foreground/80 max-w-xs mx-auto leading-relaxed uppercase tracking-wider">
+                    <p className="text-[9px] text-foreground max-w-xs mx-auto leading-relaxed uppercase tracking-wider">
                       ⚠️ Shown once. Server only stores the hash value, keeping your secret safe.
                     </p>
                   </div>
@@ -193,7 +193,7 @@ export function Hero() {
       <section className="w-full h-[200px] bg-foreground flex items-center justify-center text-background select-none relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-lines opacity-10" />
         <div className="border-2 border-background p-8 text-center rounded-none">
-          <span className="font-mono text-lg md:text-xl tracking-[0.3em] font-black uppercase text-[#FF4F00]">
+          <span className="font-mono text-lg md:text-xl tracking-[0.3em] font-black uppercase text-primary-text">
             STATUS: ENCRYPTED // ZERO_KNOWLEDGE
           </span>
         </div>

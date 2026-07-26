@@ -52,7 +52,7 @@ export function Navbar() {
           href="/" 
           onClick={handleBrandClick}
           aria-label="XOChat Home"
-          className="font-sans text-[20px] xs:text-[28px] md:text-[32px] font-black tracking-tighter text-foreground select-none hover:text-[#FF4F00] transition-colors"
+          className="font-sans text-[20px] xs:text-[28px] md:text-[32px] font-black tracking-tighter text-foreground select-none hover:text-primary-text transition-colors"
         >
           <TextScramble text="XOCHAT" autostart={true} />
         </Link>
@@ -64,7 +64,7 @@ export function Navbar() {
               href="#features" 
               onClick={(e) => handleScrollTo(e, '#features')}
               aria-label="Navigate to Features section"
-              className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-[#FF4F00] transition-colors duration-150"
+              className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-primary-text transition-colors duration-150"
             >
               Features
             </a>
@@ -72,14 +72,14 @@ export function Navbar() {
               href="#faq" 
               onClick={(e) => handleScrollTo(e, '#faq')}
               aria-label="Navigate to FAQ section"
-              className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-[#FF4F00] transition-colors duration-150"
+              className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-primary-text transition-colors duration-150"
             >
               FAQ
             </a>
             <Link 
               href="/recover" 
               aria-label="Navigate to Account Recovery page"
-              className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-[#FF4F00] transition-colors duration-150"
+              className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-primary-text transition-colors duration-150"
             >
               Recover
             </Link>

@@ -11,30 +11,30 @@ export function Features() {
       <section className="px-6 md:px-12 py-20 max-w-[1280px] mx-auto border-t-2 border-border">
         <div className="grid grid-cols-4 md:grid-cols-12 gap-6">
           <div className="col-span-4 md:col-span-4">
-            <span className="block text-xs font-semibold uppercase tracking-widest text-[#FF4F00] mb-3">The Philosophy</span>
+            <span className="block text-xs font-semibold uppercase tracking-widest text-primary-text mb-3">The Philosophy</span>
             <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-foreground">WHY XOCHAT?</h2>
           </div>
           <div className="col-span-4 md:col-span-8 space-y-12">
             <div className="border-b border-border pb-8">
-              <span className="font-mono text-xs font-bold text-[#FF4F00]">01 /</span>
+              <span className="font-mono text-xs font-bold text-primary-text">01 /</span>
               <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground mt-2 mb-3">NO METADATA RETENTION</h3>
-              <p className="text-sm md:text-base text-foreground/85 font-medium leading-relaxed max-w-2xl">
+              <p className="text-sm md:text-base text-foreground font-medium leading-relaxed max-w-2xl">
                 We don&apos;t just encrypt your messages; we ignore their existence. No logs, no timestamps, no identity links stored centrally.
               </p>
             </div>
             
             <div className="border-b border-border pb-8">
-              <span className="font-mono text-xs font-bold text-[#FF4F00]">02 /</span>
+              <span className="font-mono text-xs font-bold text-primary-text">02 /</span>
               <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground mt-2 mb-3">EPHEMERAL ARCHITECTURE</h3>
-              <p className="text-sm md:text-base text-foreground/85 font-medium leading-relaxed max-w-2xl">
+              <p className="text-sm md:text-base text-foreground font-medium leading-relaxed max-w-2xl">
                 Information lives in the moment. Sessions dissolve upon browser closing or deletion requests. Digital permanence is a core security vulnerability.
               </p>
             </div>
 
             <div className="border-b border-border pb-8">
-              <span className="font-mono text-xs font-bold text-[#FF4F00]">03 /</span>
+              <span className="font-mono text-xs font-bold text-primary-text">03 /</span>
               <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground mt-2 mb-3">SWISS PRECISION</h3>
-              <p className="text-sm md:text-base text-foreground/85 font-medium leading-relaxed max-w-2xl">
+              <p className="text-sm md:text-base text-foreground font-medium leading-relaxed max-w-2xl">
                 Built strictly on the principles of Swiss design: objective typography, robust column layout alignments, and raw structural efficiency.
               </p>
             </div>
@@ -47,19 +47,19 @@ export function Features() {
         <div className="px-6 md:px-12 max-w-[1280px] mx-auto">
           <div className="grid grid-cols-4 md:grid-cols-12 gap-6">
             <div className="col-span-4 md:col-span-12 mb-8">
-              <span className="block text-xs font-semibold uppercase tracking-[0.4em] text-[#FF4F00]">Network Status</span>
+              <span className="block text-xs font-semibold uppercase tracking-[0.4em] text-primary-text">Network Status</span>
             </div>
             <div className="col-span-4 md:col-span-4 border-l border-background/20 pl-6 py-4">
               <div className="font-mono text-4xl md:text-5xl font-bold mb-2">14,209</div>
-              <div className="text-[10px] uppercase tracking-widest text-background/90 font-bold">Active Nodes</div>
+              <div className="text-[10px] uppercase tracking-widest text-background font-bold">Active Nodes</div>
             </div>
             <div className="col-span-4 md:col-span-4 border-l border-background/20 pl-6 py-4">
               <div className="font-mono text-4xl md:text-5xl font-bold mb-2">12ms</div>
-              <div className="text-[10px] uppercase tracking-widest text-background/90 font-bold">Network Latency</div>
+              <div className="text-[10px] uppercase tracking-widest text-background font-bold">Network Latency</div>
             </div>
             <div className="col-span-4 md:col-span-4 border-l border-background/20 pl-6 py-4">
               <div className="font-mono text-4xl md:text-5xl font-bold mb-2">v4.2.0</div>
-              <div className="text-[10px] uppercase tracking-widest text-background/90 font-bold">Protocol Version</div>
+              <div className="text-[10px] uppercase tracking-widest text-background font-bold">Protocol Version</div>
             </div>
           </div>
         </div>
@@ -72,10 +72,10 @@ export function Features() {
             {/* Bento Card 1 */}
             <div className="col-span-4 md:col-span-8 border-2 border-border p-8 flex flex-col justify-between min-h-[350px] group transition-all duration-300 hover:bg-background/5 rounded-none">
               <div>
-                <Shield className="w-12 h-12 mb-6 text-background group-hover:text-[#FF4F00] transition-colors" />
+                <Shield className="w-12 h-12 mb-6 text-background group-hover:text-[#FF8040] transition-colors" />
                 <h3 className="text-3xl md:text-5xl font-black uppercase leading-none tracking-tight">MILITARY GRADE<br />ENCRYPTION</h3>
               </div>
-              <p className="text-sm md:text-base text-background/90 max-w-md font-medium">
+              <p className="text-sm md:text-base text-background max-w-md font-medium">
                 End-to-end local encryption protocols ensuring even the communication network nodes cannot read or analyze payload headers.
               </p>
             </div>
@@ -94,10 +94,10 @@ export function Features() {
             {/* Bento Card 3 */}
             <div className="col-span-4 md:col-span-4 border-2 border-border p-8 flex flex-col justify-between min-h-[350px] group transition-all duration-300 hover:bg-background/5 rounded-none">
               <div>
-                <EyeOff className="w-12 h-12 mb-6 text-background group-hover:text-[#FF4F00] transition-colors" />
+                <EyeOff className="w-12 h-12 mb-6 text-background group-hover:text-[#FF8040] transition-colors" />
                 <h3 className="text-3xl font-black uppercase leading-none tracking-tight">EPHEMERAL<br />CLEANUP</h3>
               </div>
-              <p className="text-sm text-background/90 font-medium">
+              <p className="text-sm text-background font-medium">
                 Automatic rate-limited sweeps automatically clean inactive credentials and unutilized communication history slots.
               </p>
             </div>
