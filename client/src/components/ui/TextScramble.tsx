@@ -68,7 +68,8 @@ export function TextScramble({
       onMouseEnter={startScramble}
       className={`font-mono cursor-default select-none ${className}`}
     >
-      {displayText}
+      <span aria-hidden="true">{displayText}</span>
+      <span className="sr-only">{text}</span>
     </span>
   );
 }

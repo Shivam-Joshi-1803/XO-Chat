@@ -41,7 +41,7 @@ export function FAQ() {
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-foreground">
             FREQUENTLY ASKED QUESTIONS
           </h2>
-          <p className="text-foreground/60 text-sm md:text-base font-medium">
+          <p className="text-foreground/85 text-sm md:text-base font-medium">
             Everything you need to know about the privacy, recovery, and security model of XOChat.
           </p>
         </div>
@@ -82,7 +82,7 @@ export function FAQ() {
                       exit={{ height: 0 }}
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
                     >
-                      <div className="px-5 pb-5 pt-1 text-xs md:text-sm text-foreground/80 font-medium leading-relaxed border-t border-border bg-subtle-gray">
+                      <div className="px-5 pb-5 pt-1 text-xs md:text-sm text-foreground/90 font-medium leading-relaxed border-t border-border bg-subtle-gray">
                         {faq.answer}
                       </div>
                     </motion.div>

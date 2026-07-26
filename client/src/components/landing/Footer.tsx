@@ -30,31 +30,31 @@ export function Footer() {
           <div className="font-black text-xl uppercase tracking-widest mb-3 text-background">
             XOCHAT
           </div>
-          <p className="text-sm text-background/80 max-w-xs font-medium">
+          <p className="text-sm text-background/90 max-w-xs font-medium">
             Built on the foundations of architectural structuralism and cryptographic freedom.
           </p>
         </div>
 
         <div className="col-span-2 md:col-span-2 space-y-2">
-          <h3 className="text-xs font-black uppercase tracking-widest text-[#FF4F00] mb-4">Protocol</h3>
-          <a className="block text-sm font-semibold text-background/80 hover:text-background transition-colors" href="#features">Features</a>
-          <a className="block text-sm font-semibold text-background/80 hover:text-background transition-colors" href="#faq">FAQ</a>
+          <span className="block text-xs font-black uppercase tracking-widest text-[#FF4F00] mb-4">Protocol</span>
+          <a className="block text-sm font-semibold text-background/90 hover:text-background transition-colors" href="#features" aria-label="Navigate to Features section">Features</a>
+          <a className="block text-sm font-semibold text-background/90 hover:text-background transition-colors" href="#faq" aria-label="Navigate to FAQ section">FAQ</a>
         </div>
 
         <div className="col-span-2 md:col-span-2 space-y-2">
-          <h3 className="text-xs font-black uppercase tracking-widest text-[#FF4F00] mb-4">Source</h3>
-          <a className="block text-sm font-semibold text-background/80 hover:text-background transition-colors" href="https://github.com" target="_blank" rel="noopener noreferrer">Github</a>
-          <Link className="block text-sm font-semibold text-background/80 hover:text-background transition-colors" href="/recover">Recover</Link>
+          <span className="block text-xs font-black uppercase tracking-widest text-[#FF4F00] mb-4">Source</span>
+          <a className="block text-sm font-semibold text-background/90 hover:text-background transition-colors" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub Repository in a new tab">Github</a>
+          <Link className="block text-sm font-semibold text-background/90 hover:text-background transition-colors" href="/recover" aria-label="Navigate to Account Recovery page">Recover</Link>
         </div>
 
         <div className="col-span-4 md:col-span-2 space-y-2">
-          <h3 className="text-xs font-black uppercase tracking-widest text-[#FF4F00] mb-4">Network</h3>
-          <span className="block text-sm font-semibold text-background/80">Zero Log</span>
-          <span className="block text-sm font-semibold text-background/80">Encrypted</span>
+          <span className="block text-xs font-black uppercase tracking-widest text-[#FF4F00] mb-4">Network</span>
+          <span className="block text-sm font-semibold text-background/90">Zero Log</span>
+          <span className="block text-sm font-semibold text-background/90">Encrypted</span>
         </div>
 
         <div className="col-span-4 md:col-span-12 pt-8 border-t border-background/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-background/70">© {new Date().getFullYear()} XOCHAT. BUILT ON STRUCTURE.</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-background/90">© {new Date().getFullYear()} XOCHAT. BUILT ON STRUCTURE.</span>
           <span className="font-mono text-xs font-bold text-[#FF4F00]">v1.0.4-STABLE</span>
         </div>
       </div>

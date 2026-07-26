@@ -51,6 +51,7 @@ export function Navbar() {
         <Link 
           href="/" 
           onClick={handleBrandClick}
+          aria-label="XOChat Home"
           className="font-sans text-[20px] xs:text-[28px] md:text-[32px] font-black tracking-tighter text-foreground select-none hover:text-[#FF4F00] transition-colors"
         >
           <TextScramble text="XOCHAT" autostart={true} />
@@ -62,6 +63,7 @@ export function Navbar() {
             <a 
               href="#features" 
               onClick={(e) => handleScrollTo(e, '#features')}
+              aria-label="Navigate to Features section"
               className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-[#FF4F00] transition-colors duration-150"
             >
               Features
@@ -69,12 +71,14 @@ export function Navbar() {
             <a 
               href="#faq" 
               onClick={(e) => handleScrollTo(e, '#faq')}
+              aria-label="Navigate to FAQ section"
               className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-[#FF4F00] transition-colors duration-150"
             >
               FAQ
             </a>
             <Link 
               href="/recover" 
+              aria-label="Navigate to Account Recovery page"
               className="text-xs font-semibold uppercase tracking-widest text-foreground hover:text-[#FF4F00] transition-colors duration-150"
             >
               Recover
@@ -87,13 +91,14 @@ export function Navbar() {
               onClick={handleToggleTheme}
               className="p-2 xs:p-2.5 border-2 border-border bg-surface text-foreground hover:bg-foreground hover:text-background transition-colors cursor-pointer rounded-none"
               title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-              aria-label="Toggle Theme"
+              aria-label={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
             >
               {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
 
             <button
               onClick={() => setShowUsernameModal(true)}
+              aria-label="Claim Username and start chatting"
               className="bg-foreground text-background px-3 py-2 text-[10px] xs:px-6 xs:py-3 xs:text-xs uppercase tracking-widest font-black hover:bg-[#FF4F00] hover:text-white transition-colors duration-150 cursor-pointer rounded-none border border-border"
             >
               <TextScramble text="Claim Username" autostart={false} />
