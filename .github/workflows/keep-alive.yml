@@ -10,11 +10,12 @@ jobs:
   ping-render:
     name: Ping Render Backend
     runs-on: ubuntu-latest
+    environment: keep alive
     steps:
       - name: Ping Render Backend /api/health
         run: |
           if [ -z "${{ secrets.RENDER_SERVER_URL }}" ]; then
-            echo "::notice ::RENDER_SERVER_URL secret is not set in GitHub Repository Secrets. Skipping Render ping."
+            echo "::notice ::RENDER_SERVER_URL secret is not set. Skipping Render ping."
             exit 0
           fi
           
@@ -31,6 +32,7 @@ jobs:
   ping-supabase:
     name: Ping Supabase REST API
     runs-on: ubuntu-latest
+    environment: keep alive
     steps:
       - name: Ping Supabase REST API
         run: |

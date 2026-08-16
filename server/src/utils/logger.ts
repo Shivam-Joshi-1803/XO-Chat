@@ -19,7 +19,15 @@ export const logger = {
   },
 
   error(context: string, message: string, error?: unknown): void {
-    const errMsg = error instanceof Error ? error.message : '';
+    let errMsg = '';
+    if (error instanceof Error) {
+      errMsg = error.message;
+    } else if (error && typeof error === 'object') {
+      const errObj = error as Record<string, unknown>;
+      errMsg = String(errObj.message || errObj.error_description || errObj.details || JSON.stringify(error));
+    } else if (error) {
+      errMsg = String(error);
+    }
     console.error(formatMessage('error', context, `${message}${errMsg ? ` — ${errMsg}` : ''}`));
   },
 
