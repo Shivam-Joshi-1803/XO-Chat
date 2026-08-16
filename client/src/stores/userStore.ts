@@ -31,15 +31,6 @@ export const useUserStore = create<UserState>((set) => ({
   fetchUser: async () => {
     set({ isLoading: true });
 
-    // Skip API call if no session cookie exists — prevents 401 console error
-    if (typeof document !== 'undefined') {
-      const hasSession = document.cookie.split(';').some((c) => c.trim().startsWith('xo_session='));
-      if (!hasSession) {
-        set({ user: null, isAuthenticated: false, isLoading: false });
-        return;
-      }
-    }
-
     try {
       const res = await api.getMe();
       if (res.success && res.data) {

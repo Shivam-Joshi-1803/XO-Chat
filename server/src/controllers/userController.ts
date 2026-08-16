@@ -114,7 +114,12 @@ router.post(
       path: '/',
     });
 
-    res.json({ success: true, message: 'Account recovered successfully', session_token: result.data.session_token });
+    res.json({
+      success: true,
+      message: 'Account recovered successfully',
+      session_token: result.data.session_token,
+      data: result.data.user,
+    });
   }
 );
 

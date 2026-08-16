@@ -7,7 +7,7 @@ import { useUserStore } from '@/stores/userStore';
 
 export function RecoveryForm() {
   const router = useRouter();
-  const { fetchUser } = useUserStore();
+  const { fetchUser, setUser } = useUserStore();
 
   const [username, setUsername] = useState('');
   const [recoveryKey, setRecoveryKey] = useState('');
@@ -34,13 +34,20 @@ export function RecoveryForm() {
 
     setLoading(true);
     try {
-      const res = await api.recoverAccount(cleanUsername, cleanKey);
+      const res = (await api.recoverAccount(cleanUsername, cleanKey)) as any;
       if (res.success) {
+        if (res.session_token && typeof window !== 'undefined') {
+          sessionStorage.setItem('xo_session_token', res.session_token);
+        }
+        if (res.data) {
+          setUser(res.data);
+        } else {
+          await fetchUser();
+        }
         setSuccess(true);
-        await fetchUser();
         setTimeout(() => {
           router.push('/chat');
-        }, 1200);
+        }, 1000);
       } else {
         setError(res.error || 'Invalid username or recovery key');
       }

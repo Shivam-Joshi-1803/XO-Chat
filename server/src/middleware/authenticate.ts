@@ -25,7 +25,9 @@ export async function authenticate(
   next: NextFunction
 ): Promise<void> {
   try {
-    const sessionToken = req.cookies?.['__Host-xo_session'] || req.cookies?.['xo_session'];
+    const authHeader = req.headers.authorization;
+    const bearerToken = authHeader && authHeader.startsWith('Bearer ') ? authHeader.substring(7).trim() : null;
+    const sessionToken = req.cookies?.['__Host-xo_session'] || req.cookies?.['xo_session'] || bearerToken;
 
     if (!sessionToken || typeof sessionToken !== 'string') {
       res.status(401).json({ success: false, error: 'Authentication required' });

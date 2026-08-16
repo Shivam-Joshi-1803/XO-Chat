@@ -66,7 +66,7 @@ export const userService = {
   async recoverAccount(
     username: string,
     recoveryKey: string
-  ): Promise<ApiResponse<{ session_token: string }>> {
+  ): Promise<ApiResponse<{ session_token: string; user: PublicUser }>> {
     const normalized = normalizeUsername(username);
     const user = await userRepository.findByUsername(normalized);
 
@@ -86,7 +86,8 @@ export const userService = {
     }
 
     logger.info('userService', 'Account recovered via recovery key');
-    return { success: true, data: { session_token: newToken } };
+    const { recovery_key_hash, session_token, ...publicData } = user;
+    return { success: true, data: { session_token: newToken, user: publicData } };
   },
 
   async deleteUser(userId: string): Promise<ApiResponse> {

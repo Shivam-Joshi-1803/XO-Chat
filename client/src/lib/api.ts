@@ -19,10 +19,12 @@ async function request<T>(
   options: RequestInit = {}
 ): Promise<T> {
   const url = `${API_URL}${endpoint}`;
+  const token = typeof window !== 'undefined' ? sessionStorage.getItem('xo_session_token') : null;
   const res = await fetch(url, {
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
       ...options.headers,
     },
     ...options,
@@ -205,10 +207,14 @@ export const api = {
     formData.append('image', file);
     formData.append('conversation_id', conversationId);
 
+    const token = typeof window !== 'undefined' ? sessionStorage.getItem('xo_session_token') : null;
     const url = `${API_URL}/images/upload`;
     const res = await fetch(url, {
       method: 'POST',
       credentials: 'include',
+      headers: {
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
       body: formData,
     });
     return res.json();
