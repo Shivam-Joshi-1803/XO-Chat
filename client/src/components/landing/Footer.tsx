@@ -43,7 +43,7 @@ export function Footer() {
 
         <div className="col-span-2 md:col-span-2 space-y-2">
           <span className="block text-xs font-black uppercase tracking-widest text-[#FF8040] mb-4">Source</span>
-          <a className="block text-sm font-semibold text-background hover:text-background transition-colors" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub Repository in a new tab">Github</a>
+          <a className="block text-sm font-semibold text-background hover:text-background transition-colors" href="https://github.com/Shivam-Joshi-1803/XO-Chat" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub Repository in a new tab">Github</a>
           <Link className="block text-sm font-semibold text-background hover:text-background transition-colors" href="/recover" aria-label="Navigate to Account Recovery page">Recover</Link>
         </div>
 

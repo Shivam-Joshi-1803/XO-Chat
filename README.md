@@ -227,6 +227,29 @@ cd server
 npm run build
 ```
 
+
+---
+
+## ⏰ Keeping Render & Supabase Alive 24/7 (Free Tier Keep-Alive)
+
+Both **Render Free Web Services** (which sleep after 15 minutes of inactivity) and **Supabase Free Tier** (which auto-pauses after 7 days of inactivity) are kept alive automatically in XOChat:
+
+### 1. Built-in Server Keep-Alive Jobs
+- **Render Backend Self-Ping** ([`keepRenderAlive.ts`](file:///c:/Users/joshi/Documents/projects/XO%20chat/server/src/jobs/keepRenderAlive.ts)): Self-pings `/api/health` every **10 minutes** when running on Render (`RENDER_EXTERNAL_URL`), keeping the web service continuously awake.
+- **Supabase DB Ping** ([`keepSupabaseAlive.ts`](file:///c:/Users/joshi/Documents/projects/XO%20chat/server/src/jobs/keepSupabaseAlive.ts)): Sends a lightweight query every **3 days** to prevent Supabase auto-pausing.
+
+### 2. GitHub Action Automated Ping Workflow ([`keep-alive.yml`](file:///c:/Users/joshi/Documents/projects/XO%20chat/.github/workflows/keep-alive.yml))
+- Automatically pings Render `/api/health` every **14 minutes** and Supabase REST API every **4 days** in the background.
+- **Setup Instructions**:
+  1. Go to your GitHub repository -> **Settings** -> **Secrets and variables** -> **Actions**.
+  2. Add Secrets:
+     - `RENDER_SERVER_URL`: `https://your-app.onrender.com`
+     - `SUPABASE_URL`: `https://your-project.supabase.co`
+     - `SUPABASE_ANON_KEY`: `your-supabase-anon-key`
+
+### 3. Alternative 100% Free Option (UptimeRobot / cron-job.org)
+- You can also create a free monitor on [UptimeRobot.com](https://uptimerobot.com) targeting `https://your-app.onrender.com/api/health` every 5 minutes. This ensures Render never sleeps, which in turn keeps all backend jobs and Supabase active 24/7!
+
 ---
 
 ## 📜 License
